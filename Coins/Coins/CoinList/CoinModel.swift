@@ -19,4 +19,8 @@ struct CoinModel: Codable {
     var current_price: Double
     var market_cap: Double
     var market_cap_rank: Int
+    var total_volume: Double
+    var high_24h: Double
+    var low_24h: Double
+    var price_change_24h: Double
 }

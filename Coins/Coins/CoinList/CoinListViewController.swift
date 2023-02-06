@@ -8,7 +8,6 @@
 import UIKit
 
 class CoinListViewController: UIViewController {
-
     private var tableView: UITableView?
     var viewModel: CoinListViewModel?
     override func viewDidLoad() {
@@ -50,8 +49,12 @@ class CoinListViewController: UIViewController {
         }
     }
     private func loadData() {
-        self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd",
-                                                                   "100"))
+        self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd","100"))
+    }
+    
+    func pushDetailViewController(dataModel: CoinModel?) {
+        let detailViewController = CoinDetailViewBuilder.buildCoinDetailView(dataModel: dataModel)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
