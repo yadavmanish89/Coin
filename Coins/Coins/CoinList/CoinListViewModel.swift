@@ -41,9 +41,4 @@ class CoinListViewModel {
     func numberOfRows() -> Int {
         return self.dataModel.count
     }
-    /// Create url for fetching coinlList
-    /// - Returns: API request having url for CoinList
-    func getCoinListRequest() -> RequestProtocol {
-        return APIRequest.coinList
-    }
 }

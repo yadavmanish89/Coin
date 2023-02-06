@@ -39,27 +39,32 @@ class CoinTableViewCell: UITableViewCell {
     }
     
     private func addNameLabel() {
-        backgroundColor = .red
-                addSubview(name)
-                NSLayoutConstraint.activate([
-                    name.topAnchor.constraint(equalTo: topAnchor),
-                    name.bottomAnchor.constraint(equalTo: bottomAnchor),
-                    name.rightAnchor.constraint(equalTo: rightAnchor),
-                    name.widthAnchor.constraint(equalTo: heightAnchor)
-                ])
+        name.textAlignment = .left
+        price.textAlignment = .left
+        price.backgroundColor = .yellow
+        name.backgroundColor = .green
+        addSubview(name)
+        addSubview(price)
+        NSLayoutConstraint.activate([
+            name.topAnchor.constraint(equalTo: topAnchor),
+            name.leadingAnchor.constraint(equalTo: leadingAnchor),
+            name.bottomAnchor.constraint(equalTo: bottomAnchor),
+            name.trailingAnchor.constraint(equalTo: price.leadingAnchor),
+            
+            price.topAnchor.constraint(equalTo: topAnchor),
+            price.widthAnchor.constraint(equalToConstant: 100.0),
+            price.bottomAnchor.constraint(equalTo: bottomAnchor),
+            price.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     private func setData() {
-        self.name.text = dataModel?.name
+        if let dataModel = dataModel {
+            self.name.text = dataModel.name
+            self.price.text = "\(dataModel.current_price)"
+        }
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -10,12 +10,13 @@ import UIKit
 class CoinListViewController: UIViewController {
 
     private var tableView: UITableView?
-    private var viewModel: CoinListViewModel?
+    var viewModel: CoinListViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpView()
         bindViewModel()
+        loadData()
     }
      init(tableView: UITableView, viewModel: CoinListViewModel) {
         self.tableView = tableView
@@ -48,6 +49,9 @@ class CoinListViewController: UIViewController {
             }
         }
     }
-
+    private func loadData() {
+        self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd",
+                                                                   "100"))
+    }
 }
 

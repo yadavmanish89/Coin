@@ -19,8 +19,9 @@ class NetworkManager: NetworkProtocol {
             completion(.failure(.invalidURL))
             return
         }
-        let urlRequest = URLRequest(url: url)
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        var urlRequest = URLRequest(url: url)
+        urlRequest.allHTTPHeaderFields = request.httpHeaders
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard let data = data else {
                 completion(.failure(.badResponse))
@@ -36,5 +37,6 @@ class NetworkManager: NetworkProtocol {
             }
             debugPrint("Response")
         }.resume()
+         //
     }
 }

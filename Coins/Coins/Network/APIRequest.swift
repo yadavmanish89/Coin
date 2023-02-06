@@ -9,28 +9,45 @@ import Foundation
 
 protocol RequestProtocol {
     var url: String { get }
+    var queryString: String { get }
     var httpHeaders: [String : String]? { get }
     var method: String { get }
 }
 
-let baseURL = "https://pro-api.coingecko.com/api/v3/"
-// coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
+/* https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false
+ */
 enum APIRequest: RequestProtocol {
-    case coinList
-    case coinDetail(String)
-    
+    case coinList(String, String) // vs_currency, per_page
+    var baseURL: String {
+        return "https://api.coingecko.com/api/v3/"
+    }
+    var endPoint: String {
+        return "coins/markets"
+    }
     var url: String {
         switch self {
         case .coinList:
-            return "\(baseURL)/resource/s3k6-pzi2.json"
-        case .coinDetail(let id):
-            return "\(baseURL)/resource/f9bf-2cp4.json?dbn=\(id)"
+            return "\(baseURL)\(endPoint)?\(queryString)"
+        }
+    }
+    var queryString: String {
+        switch self {
+            case .coinList(let currency, let perPage):
+            return getQueryString(currency: currency,
+                                  perPage: perPage)
         }
     }
     var httpHeaders: [String: String]? {
-        return nil
+        switch self {
+        case .coinList:
+            return ["Accept": "application/json"]
+        }
     }
     var method: String {
         return "GET"
+    }
+    
+    private func getQueryString(currency: String, perPage: String) -> String {
+        return "vs_currency=\(currency)&per_page=\(perPage)"
     }
 }
