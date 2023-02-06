@@ -8,7 +8,7 @@
 import UIKit
 
 class CoinListViewController: UIViewController {
-    private var tableView: UITableView?
+    private var tableView: UITableView
     var viewModel: CoinListViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,24 +27,28 @@ class CoinListViewController: UIViewController {
     }
     
     private func setUpView() {
-        self.tableView?.register(CoinTableViewCell.self, forCellReuseIdentifier: "CoinCell")
-        self.tableView?.dataSource = self
-        self.tableView?.delegate = self
-        self.view.addSubview(tableView ?? UITableView())
-        tableView?.pinToSuperView(superView: self.view)
+        let titleImageView = UIImageView(image: UIImage(named: "coinflip"))
+        titleImageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = titleImageView
+//        self.title = "CoinFlip"
+        self.tableView.register(CoinTableViewCell.self, forCellReuseIdentifier: "CoinCell")
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.view.addSubview(tableView)
+        tableView.pinToSuperView(superView: self.view)
     }
-
+    
     private func bindViewModel() {
         self.viewModel?.updateUI = { [weak self] in
             DispatchQueue.main.async {
-                self?.tableView?.reloadData()
+                self?.tableView.reloadData()
             }
         }
         self.viewModel?.showError = { [weak self] errorMessage in
             print("Show error message:\(errorMessage)")
             //Reloading Tableview even if error case so tableview can update id ant steal data
             DispatchQueue.main.async {
-                self?.tableView?.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -52,7 +56,7 @@ class CoinListViewController: UIViewController {
         self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd","100"))
     }
     
-    func pushDetailViewController(dataModel: CoinModel?) {
+    func pushDetailViewController(dataModel: CoinModel) {
         let detailViewController = CoinDetailViewBuilder.buildCoinDetailView(dataModel: dataModel)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

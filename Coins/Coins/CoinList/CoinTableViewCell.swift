@@ -14,7 +14,7 @@ class CoinTableViewCell: UITableViewCell {
             self.setData()
         }
     }
-    var image: UIImageView = {
+    var coinImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,12 +23,33 @@ class CoinTableViewCell: UITableViewCell {
     
     var name: UILabel = {
         let nameLabel = UILabel()
+        nameLabel.font = UIFont.titleFont()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
         return nameLabel
+    }()
+    var symbol: UILabel = {
+        let symbolLabel = UILabel()
+        symbolLabel.font = UIFont.subTitleFont()
+
+        symbolLabel.translatesAutoresizingMaskIntoConstraints = false
+        symbolLabel.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
+        return symbolLabel
+    }()
+
+    var priceUpDownImageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        return imgView
     }()
 
     var price: UILabel = {
         let priceLabel = UILabel()
+        priceLabel.textAlignment = .right
+        priceLabel.font = UIFont.titleFont()
+        priceLabel.setContentHuggingPriority(.required,
+                                             for: .horizontal)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         return priceLabel
     }()
@@ -39,23 +60,45 @@ class CoinTableViewCell: UITableViewCell {
     }
     
     private func addNameLabel() {
-        name.textAlignment = .left
-        price.textAlignment = .left
-        price.backgroundColor = .yellow
-        name.backgroundColor = .green
-        addSubview(name)
+        addSubview(coinImageView)
+        
+        let nameSymbolStackView = embedNameSymbolInVStackView()
+        addSubview(nameSymbolStackView)
+        nameSymbolStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(priceUpDownImageView)
         addSubview(price)
+        
         NSLayoutConstraint.activate([
-            name.topAnchor.constraint(equalTo: topAnchor),
-            name.leadingAnchor.constraint(equalTo: leadingAnchor),
-            name.bottomAnchor.constraint(equalTo: bottomAnchor),
-            name.trailingAnchor.constraint(equalTo: price.leadingAnchor),
             
-            price.topAnchor.constraint(equalTo: topAnchor),
-            price.widthAnchor.constraint(equalToConstant: 100.0),
-            price.bottomAnchor.constraint(equalTo: bottomAnchor),
-            price.trailingAnchor.constraint(equalTo: trailingAnchor)
+            coinImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            coinImageView.widthAnchor.constraint(equalToConstant: 40),
+            coinImageView.heightAnchor.constraint(equalToConstant: 40),
+
+            nameSymbolStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10.0),
+            nameSymbolStackView.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: 10.0),
+            nameSymbolStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5.0),
+            nameSymbolStackView.trailingAnchor.constraint(equalTo: priceUpDownImageView.leadingAnchor, constant: 10.0),
+
+            
+            priceUpDownImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            priceUpDownImageView.widthAnchor.constraint(equalToConstant: 40.0),
+            priceUpDownImageView.heightAnchor.constraint(equalToConstant: 40.0),
+            priceUpDownImageView.trailingAnchor.constraint(equalTo: price.leadingAnchor, constant: -5.0),
+
+            price.centerYAnchor.constraint(equalTo: centerYAnchor),
+            price.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15.0)
         ])
+    }
+    
+    private func embedNameSymbolInVStackView() -> UIStackView {
+        let vStackView = UIStackView(arrangedSubviews: [
+            name, symbol
+        ])
+        vStackView.axis = .vertical
+        vStackView.distribution = .equalCentering
+        return vStackView
     }
     
     required init?(coder: NSCoder) {
@@ -64,7 +107,11 @@ class CoinTableViewCell: UITableViewCell {
     private func setData() {
         if let dataModel = dataModel {
             self.name.text = dataModel.name
-            self.price.text = "\(dataModel.current_price)"
+            self.symbol.text = dataModel.symbol
+            let currentPrice = String(format: "%.2f", dataModel.current_price)
+            self.price.text = currentPrice
+            self.coinImageView.image = UIImage(named: "btc")
+            self.priceUpDownImageView.image = dataModel.price_change_24h > 0 ? UIImage(named: "uparrow") : UIImage(named: "downarrow")
         }
     }
 }

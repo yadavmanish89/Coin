@@ -21,7 +21,8 @@ extension CoinListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedModel = self.viewModel?.itemAtIndexPath(index: indexPath.row)
-        self.pushDetailViewController(dataModel: selectedModel)
+        if let selectedModel = self.viewModel?.itemAtIndexPath(index: indexPath.row) {
+            self.pushDetailViewController(dataModel: selectedModel)
+        }
     }
 }
