@@ -21,7 +21,7 @@ class NetworkManager: NetworkProtocol {
         }
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = request.httpHeaders
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
             guard let data = data else {
                 completion(.failure(.badResponse))

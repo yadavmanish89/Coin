@@ -31,7 +31,7 @@ class CoinTableViewCell: UITableViewCell {
     var symbol: UILabel = {
         let symbolLabel = UILabel()
         symbolLabel.font = UIFont.subTitleFont()
-
+        symbolLabel.textColor = UIColor.lightTextColor()
         symbolLabel.translatesAutoresizingMaskIntoConstraints = false
         symbolLabel.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
         return symbolLabel
@@ -112,6 +112,7 @@ class CoinTableViewCell: UITableViewCell {
             self.price.text = currentPrice
             self.coinImageView.image = UIImage(named: "btc")
             self.priceUpDownImageView.image = dataModel.price_change_24h > 0 ? UIImage(named: "uparrow") : UIImage(named: "downarrow")
+            self.coinImageView.downloadImageFrom(urlString: dataModel.image)
         }
     }
 }
