@@ -17,6 +17,7 @@ class CoinListViewController: UIViewController {
         bindViewModel()
         loadData()
         self.view.backgroundColor = .backgroundColor()
+        self.tableView.backgroundColor = .backgroundColor()
     }
      init(tableView: UITableView, viewModel: CoinListViewModel) {
         self.tableView = tableView

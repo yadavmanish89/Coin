@@ -23,6 +23,7 @@
 		429BE7EB2990DE4F00D780C7 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BE7EA2990DE4F00D780C7 /* Font.swift */; };
 		429BE7ED2990F96500D780C7 /* UImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BE7EC2990F96500D780C7 /* UImageView.swift */; };
 		429BE7EF2990FB6A00D780C7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BE7EE2990FB6A00D780C7 /* UIColor.swift */; };
+		429BE8112991EA6900D780C7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BE8102991EA6900D780C7 /* UILabel.swift */; };
 		42C5A13E298E07C000512039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C5A13D298E07C000512039 /* AppDelegate.swift */; };
 		42C5A140298E07C000512039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C5A13F298E07C000512039 /* SceneDelegate.swift */; };
 		42C5A142298E07C000512039 /* CoinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C5A141298E07C000512039 /* CoinListViewController.swift */; };
@@ -48,6 +49,7 @@
 		429BE7EA2990DE4F00D780C7 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Font.swift; path = ../../../../Documents/Font.swift; sourceTree = "<group>"; };
 		429BE7EC2990F96500D780C7 /* UImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UImageView.swift; path = ../../../../Documents/UImageView.swift; sourceTree = "<group>"; };
 		429BE7EE2990FB6A00D780C7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = ../../../../Documents/UIColor.swift; sourceTree = "<group>"; };
+		429BE8102991EA6900D780C7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		42C5A13A298E07C000512039 /* Coins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C5A13D298E07C000512039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42C5A13F298E07C000512039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				429BE7EE2990FB6A00D780C7 /* UIColor.swift */,
 				429BE7EC2990F96500D780C7 /* UImageView.swift */,
 				429BE7EA2990DE4F00D780C7 /* Font.swift */,
+				429BE8102991EA6900D780C7 /* UILabel.swift */,
 				429BE7D9298F885600D780C7 /* View+Constraints.swift */,
 			);
 			path = Util;
@@ -241,6 +244,7 @@
 				429BE7EF2990FB6A00D780C7 /* UIColor.swift in Sources */,
 				429BE7E52990950500D780C7 /* CoinDetailViewModel.swift in Sources */,
 				429BE7E72990952400D780C7 /* CoinDetailViewBuilder.swift in Sources */,
+				429BE8112991EA6900D780C7 /* UILabel.swift in Sources */,
 				429BE7EB2990DE4F00D780C7 /* Font.swift in Sources */,
 				42C5A152298E0BA000512039 /* CoinListViewBuilder.swift in Sources */,
 				429BE7DC29903BD600D780C7 /* CoinListViewController+TableView.swift in Sources */,

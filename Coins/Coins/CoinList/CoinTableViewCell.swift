@@ -24,6 +24,7 @@ class CoinTableViewCell: UITableViewCell {
     var name: UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = UIFont.titleFont()
+        nameLabel.textColor = UIColor.themeColor()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
         return nameLabel
@@ -48,6 +49,8 @@ class CoinTableViewCell: UITableViewCell {
         let priceLabel = UILabel()
         priceLabel.textAlignment = .right
         priceLabel.font = UIFont.titleFont()
+        priceLabel.textColor = UIColor.themeColor()
+        priceLabel.backgroundColor = .clear
         priceLabel.setContentHuggingPriority(.required,
                                              for: .horizontal)
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +60,7 @@ class CoinTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addNameLabel()
+        self.backgroundColor = .clear
     }
     
     private func addNameLabel() {
