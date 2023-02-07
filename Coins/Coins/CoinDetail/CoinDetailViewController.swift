@@ -73,12 +73,18 @@ class CoinDetailViewController: UIViewController {
             bottom: 0,
             right: 20.0)
         let backButton = UIButton(type: .custom)
+        backButton.addTarget(self,
+                             action: #selector(backButtonTap),
+                             for: .touchUpInside)
         let buttonImage = UIImage(named: "chevronleft")?.withTintColor(.themeColor())
         backButton.setImage(buttonImage,
                             for: .normal)
         backButton.imageView?.contentMode = .scaleAspectFit
         let leftBarButton = UIBarButtonItem(customView: backButton)
-        self.navigationItem.leftBarButtonItem = leftBarButton        
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    @objc private func backButtonTap() {
+        self.navigationController?.popViewController(animated: true)
     }
     private func getHorizontalStackWith(caption: String, value: String) -> UIStackView {
         let captionLabel = ViewBuilder.getLabel(text: caption,

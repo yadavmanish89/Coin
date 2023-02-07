@@ -61,6 +61,7 @@ class CoinTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addNameLabel()
         self.backgroundColor = .clear
+        self.selectionStyle = .none
     }
     
     private func addNameLabel() {
