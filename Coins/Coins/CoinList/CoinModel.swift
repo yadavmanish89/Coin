@@ -23,4 +23,5 @@ struct CoinModel: Codable {
     var high_24h: Double
     var low_24h: Double
     var price_change_24h: Double
+    var price_change_percentage_24h: Double
 }

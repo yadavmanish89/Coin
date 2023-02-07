@@ -25,10 +25,26 @@ class ViewBuilder {
         ]
         attributeTitle.addAttributes(attributes, range: NSRange(location: 0, length: attributeTitle.length))
         let button = UIButton(type: .custom)
-//        button.setTitle(title, for: .normal)
-//        button.setTitleColor(titleColor, for: .normal)
         button.setAttributedTitle(attributeTitle, for: .normal)
         button.backgroundColor = bgColor
         return button
+    }
+    
+    static func getLabel(text: String,
+                         textColor: UIColor,
+                         font: UIFont) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.textColor = textColor
+        label.font = font
+        return label
+    }
+    
+    static func getImageView(image: UIImage? = nil) -> UIImageView {
+        let imgView = UIImageView(image: image)
+        imgView.contentMode = .scaleAspectFit
+        imgView.backgroundColor = .white
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        return imgView
     }
 }
