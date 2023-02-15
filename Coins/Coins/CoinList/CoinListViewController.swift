@@ -55,9 +55,7 @@ class CoinListViewController: UIViewController {
         }
     }
     private func loadData() {
-        self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd","100"))
-        
-        let set1: Set<String> = ["hey", "hi", "hello", "hey"]
+        self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd","100"))        
     }
     
     func pushDetailViewController(dataModel: CoinModel) {
