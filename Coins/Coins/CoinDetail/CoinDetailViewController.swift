@@ -13,13 +13,13 @@ class CoinDetailViewController: UIViewController {
     let titleView: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
-        titleLabel.textColor = .themeColor()
-        titleLabel.font = UIFont.largeTitleFont()
+        titleLabel.textColor = .themeColor
+        titleLabel.font = UIFont.largeTitleFont
         return titleLabel
     }()
     var headerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .backgroundColor()
+        view.backgroundColor = .backgroundColor
         return view
     }()
     var imageView : UIImageView = {
@@ -33,7 +33,7 @@ class CoinDetailViewController: UIViewController {
     var name: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .center
-        nameLabel.font = UIFont.largeTitleFont()
+        nameLabel.font = UIFont.largeTitleFont
         nameLabel.setContentCompressionResistancePriority(.required,
                                             for: .horizontal)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ class CoinDetailViewController: UIViewController {
         backButton.addTarget(self,
                              action: #selector(backButtonTap),
                              for: .touchUpInside)
-        let buttonImage = UIImage(named: "chevronleft")?.withTintColor(.themeColor())
+        let buttonImage = UIImage(named: "chevronleft")?.withTintColor(.themeColor)
         backButton.setImage(buttonImage,
                             for: .normal)
         backButton.imageView?.contentMode = .scaleAspectFit
@@ -88,17 +88,17 @@ class CoinDetailViewController: UIViewController {
     }
     private func getHorizontalStackWith(caption: String, value: String) -> UIStackView {
         let captionLabel = ViewBuilder.getLabel(text: caption,
-                                                textColor: .textColor(),
-                                                font:  UIFont.largeTitleFont())
+                                                textColor: .textColor,
+                                                font:  UIFont.largeTitleFont)
         let valueLabel = ViewBuilder.getLabel(text: value,
-                                                textColor: .textColor(),
-                                                font:  UIFont.largeTitleFont())
+                                                textColor: .textColor,
+                                                font:  UIFont.largeTitleFont)
         let hStackView = UIStackView(arrangedSubviews: [captionLabel, valueLabel])
         return hStackView
     }
     private func getSeparatorView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .separatorColor()
+        view.backgroundColor = .separatorColor
         view.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
         return view
     }
@@ -195,8 +195,8 @@ class CoinDetailViewController: UIViewController {
         self.titleView.text = viewModel.getName()
         self.price.addAttributedText(
             text: "$ \(viewModel.getCurrentPrice())",
-            font: UIFont.extraLargeTitleFont(),
-            textColor: .themeColor(),
+            font: UIFont.extraLargeTitleFont,
+            textColor: .themeColor,
             lineSpacing: 20.0
         )
         self.name.text = viewModel.getName()
@@ -205,8 +205,8 @@ class CoinDetailViewController: UIViewController {
     private func changeIn24HourView() -> UIStackView {
         
         let captionLabel = ViewBuilder.getLabel(text: "Change in 24 hour",
-                                                textColor: .themeColor(),
-                                                font: .titleFont())
+                                                textColor: .themeColor,
+                                                font: .titleFont)
         captionLabel.setContentCompressionResistancePriority(.required,
                                                              for: .horizontal)
         let priceChangeIn24Hour = viewModel.getPriceChange24Hr()
@@ -215,8 +215,8 @@ class CoinDetailViewController: UIViewController {
         let value = String(format: "%.3f",viewModel.getPriceChange24Hr())
         let valueLabel = ViewBuilder.getLabel(
             text: value,
-            textColor: .textColor(),
-            font: .titleFont())
+            textColor: .textColor,
+            font: .titleFont)
         valueLabel.setContentCompressionResistancePriority(.required,
                                                              for: .horizontal)
 
@@ -233,17 +233,17 @@ class CoinDetailViewController: UIViewController {
     
     private func buySellStackView() -> UIStackView {
         let buyButton = ViewBuilder.getButton(title: "Buy",
-                                              titleColor: .textColor(),
-                                              font: .largeTitleFont(),
-                                              bgColor: .themeColor())
+                                              titleColor: .textColor,
+                                              font: .largeTitleFont,
+                                              bgColor: .themeColor)
         buyButton.setContentCompressionResistancePriority(.required,
                                                           for: .horizontal)
         buyButton.setContentHuggingPriority(.defaultLow,
                                             for: .horizontal)
         let sellButton = ViewBuilder.getButton(title: "Sell",
-                                               titleColor: .textColor(),
-                                               font: .largeTitleFont(),
-                                               bgColor: .themeColor())
+                                               titleColor: .textColor,
+                                               font: .largeTitleFont,
+                                               bgColor: .themeColor)
         sellButton.setContentCompressionResistancePriority(.required,
                                                           for: .horizontal)
         sellButton.setContentHuggingPriority(.defaultLow,

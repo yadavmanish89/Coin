@@ -23,16 +23,16 @@ class CoinTableViewCell: UITableViewCell {
     
     var name: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.font = UIFont.titleFont()
-        nameLabel.textColor = UIColor.themeColor()
+        nameLabel.font = UIFont.titleFont
+        nameLabel.textColor = UIColor.themeColor
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
         return nameLabel
     }()
     var symbol: UILabel = {
         let symbolLabel = UILabel()
-        symbolLabel.font = UIFont.subTitleFont()
-        symbolLabel.textColor = UIColor.lightTextColor()
+        symbolLabel.font = UIFont.subTitleFont
+        symbolLabel.textColor = UIColor.lightTextColor
         symbolLabel.translatesAutoresizingMaskIntoConstraints = false
         symbolLabel.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
         return symbolLabel
@@ -48,8 +48,8 @@ class CoinTableViewCell: UITableViewCell {
     var price: UILabel = {
         let priceLabel = UILabel()
         priceLabel.textAlignment = .right
-        priceLabel.font = UIFont.titleFont()
-        priceLabel.textColor = UIColor.themeColor()
+        priceLabel.font = UIFont.titleFont
+        priceLabel.textColor = UIColor.themeColor
         priceLabel.backgroundColor = .clear
         priceLabel.setContentHuggingPriority(.required,
                                              for: .horizontal)

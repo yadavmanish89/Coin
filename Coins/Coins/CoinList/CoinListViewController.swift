@@ -16,8 +16,8 @@ class CoinListViewController: UIViewController {
         setUpView()
         bindViewModel()
         loadData()
-        self.view.backgroundColor = .backgroundColor()
-        self.tableView.backgroundColor = .backgroundColor()
+        self.view.backgroundColor = .backgroundColor
+        self.tableView.backgroundColor = .backgroundColor
     }
      init(tableView: UITableView, viewModel: CoinListViewModel) {
         self.tableView = tableView
@@ -56,6 +56,8 @@ class CoinListViewController: UIViewController {
     }
     private func loadData() {
         self.viewModel?.fetchCoinList(request: APIRequest.coinList("usd","100"))
+        
+        let set1: Set<String> = ["hey", "hi", "hello", "hey"]
     }
     
     func pushDetailViewController(dataModel: CoinModel) {
